@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: testexternaldnseight
+  namespace: network-system
+spec:
+  secretName: testexternaldnseight-tls
+  issuerRef:
+    name: letsencrypt-prod-dns
+    kind: ClusterIssuer
+  commonName: testexternaldnseight.test.acquiaintsvc.com
+  dnsNames:
+  - testexternaldnseight.test.acquiaintsvc.com
+  acme:
+    config:
+    - dns01:
+        provider: route53
+      domains:
+      - testexternaldnseight.test.acquiaintsvc.com

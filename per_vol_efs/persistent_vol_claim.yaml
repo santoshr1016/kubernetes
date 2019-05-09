@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: my-efs-vol-1
+  annotations:
+    volume.beta.kubernetes.io/storage-class: testpersistenceefs
+spec:
+  storageClassName: testpersistenceefs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
